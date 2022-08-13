@@ -1,0 +1,78 @@
+<h1> Primer Proyecto</h1>
+<hr>
+
+<div>
+    <div class="row">
+
+
+
+        <div class="col-6">
+            <h3>Listado de Músicos</h3>
+            <hr>
+            <small *ngIf="musicos.length==0; else agMusicos">No hay músicos</small>
+
+            <!-- <ul *ngIf="musicos.length!=0">
+                <li *ngFor="let musico of musicos; let i = index">
+                    {{i+1}}. {{musico.nombre}} - {{musico.trabajo}} - {{musico.instrumento}}
+                </li>
+            </ul> -->
+
+            <ng-template #agMusicos>
+                <ul>
+                    <li *ngFor="let musico of musicos; let i = index">
+                       <small>
+                        {{i+1}}. {{musico.nombre}} - {{musico.trabajo}} - {{musico.instrumento}}
+                       </small>
+                    </li>
+                </ul>
+            </ng-template>
+
+            <div class="row">
+                <div class="col-3">
+                    <button (click)="inicializar()">
+                        Inicializar
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-6">
+            <h3>Agregar Músicos</h3>
+            <hr>
+            <form (ngSubmit)="agregar()">
+                <input 
+                    type="text" 
+                    placeholder="Nombre"
+                    name="Nombre"
+                    [(ngModel)]="musicoNuevo.nombre"
+                    
+                >
+                <input 
+                    type="text" 
+                    placeholder="Trabajo"
+                    name="Trabajo"
+                    [(ngModel)]="musicoNuevo.trabajo"
+                    
+                >
+                <input 
+                    type="text" 
+                    placeholder="Instrumento"
+                    name="Instrumento"
+                    [(ngModel)]="musicoNuevo.instrumento"
+                    
+                >
+                <!-- <button (click)="agregar()">
+                    Agregar
+                </button> -->
+                <button type="submit">
+                    Agregar
+                </button>
+            </form>
+            
+        </div>
+    
+    
+    
+    </div>
+</div>
+
